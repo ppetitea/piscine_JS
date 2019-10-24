@@ -52,6 +52,26 @@ module.exports = {
                 index: 9,
                 test: '2 * 2',
                 result: 4
+            },
+            {
+                index: 10,
+                test: '-5--5-5*2--4*-4',
+                result: -26
+            },
+            {
+                index: 11,
+                test: '(-5-(-5-(5*2))--4*-4)',
+                result: -6
+            },
+            {
+                index: 12,
+                test: '10',
+                result: 10
+            },
+            {
+                index: 13,
+                test: '42  % 42',
+                result: 10
             }
         ];
     }

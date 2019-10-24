@@ -1,8 +1,4 @@
-const test_module = require('./tests/test');
-
-let test = test_module.valid_inputs();
-
-function    get_last_sub_operation(op)
+function    get_sub_operation(op)
 {
     let end;
     for (let i = op.length - 1; i > 0; i--)
@@ -15,43 +11,103 @@ function    get_last_sub_operation(op)
     return op;
 }
 
-function    epur_operation(ret)
+function    get_valid_operation_syntax(operation)
 {
-    re = /(\d+)( *)-/g;
-    ret = ret.replace(re, "$1 - ");
-    re = /(\+|\*|\/|\%)/g;
-    ret = ret.replace(re, " $1 ");
-    return ret;
+    regex = /(\d+|\))( *)-/g;
+    operation = operation.replace(regex, "$1 - ");
+    regex = /(\+|\*|\/|\%)/g;
+    operation = operation.replace(regex, " $1 ");
+    return '(' + operation + ')';
+}
+
+function    calcul(n1, op, n2)
+{
+    if (op == '+')
+        return n1 + n2;
+    if (op == '-')
+        return n1 - n2;
+    if (op == '*')
+        return n1 * n2;
+    if (op == '/')
+        return n1 / n2;
+    if (op == '%')
+        return n1 % n2;
+    else
+        return 0;
+}
+
+function    operation_join(array, operand)
+{
+    for (let i = 1; i < array.length; i++)
+    {
+        if (array[i] == operand)
+        {
+            let n1 = parseFloat(array[i - 1]);
+            let n2 = parseFloat(array[i + 1]);
+            array[i] = calcul(n1, operand, n2);
+            array[i - 1] = '';
+            array[i + 1] = '';
+            array = array.join(' ');
+            array = array.trim().split(/ +/g);
+            i--;
+        }
+    }
+    return array;
+}
+
+function    is_array_contain_value(array, value)
+{
+    for (let i = 0; i < array.length; i++)
+    {
+        if (array[i] == value)
+            return true;
+    }
+    return false;
 }
 
 function    resolve_operation(operation)
 {
     ret = operation.replace(/[()]/g, ' ');
-    let ret_r = ret.trim().split(/ +/g);
-
-    return ret;
+    let array = ret.trim().split(/ +/g);
+    if (is_array_contain_value(array, '*') == true)
+        array = operation_join(array, '*');
+    if (is_array_contain_value(array, '/') == true)
+        array = operation_join(array, '/');
+    if (is_array_contain_value(array, '%') == true)
+        array = operation_join(array, '%');
+    if (is_array_contain_value(array, '+') == true)
+        array = operation_join(array, '+');
+    if (is_array_contain_value(array, '-') == true)
+        array = operation_join(array, '-');
+    return array.join(' ');
 }
 
 function calculator(operation)
 {
-    // detect priority
-    // split operation
-
-    operation = "((10 * (2 %-10)) -5- -6 + -5*2 )";
     let sub_op;
-    operation = epur_operation(operation);
-    while (operation.indexOf(')') >= 0)
+
+    operation = get_valid_operation_syntax(operation);
+    while (operation.indexOf(')') >= 0 && operation.indexOf('(') >= 0)
     {
-        sub_op = get_last_sub_operation(operation);
+        // console.log(operation);
+        sub_op = get_sub_operation(operation);
         resolved_sub_op = resolve_operation(sub_op);
         operation = operation.replace(sub_op, resolved_sub_op);
-        console.log(operation);
     }
-
-    // console.log(example.substr(sub_op.start, sub_op.len));
-    return operation;
-
-
+    if (isNaN(operation))
+        return "Syntax Error " + operation;
+    else
+        return operation;
 }
 
-console.log(calculator());
+const test_module = require('./modules/test');
+
+let test = test_module.valid_inputs();
+let tmp;
+test.forEach(element => {
+    tmp = calculator(element.test);    
+    if (tmp == element.result)
+        console.log(element.index+" -> \t= OK ");    
+    else
+        console.log(element.index+" -> ("+element.test+") = "+element.result+" != "+tmp+" = KO ");    
+});
