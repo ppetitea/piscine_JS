@@ -71,7 +71,7 @@ module.exports = {
             {
                 index: 13,
                 test: '42  % 42',
-                result: 10
+                result: 0
             }
         ];
     }
