@@ -1,7 +1,8 @@
-const Calcul = require('./modules/calculator')
-const test_module = require('./modules/test');
+let Calcul = require('./modules/calculator.mjs');
+let driven_tests = require('./modules/driven_tests.mjs');
 
-let test = test_module.valid_inputs();
+    // console.log( new Calcul("1 - 1 -1 -1"))
+let test = driven_tests.valid_inputs();
 let tmp;
 test.forEach(element => {
     tmp = new Calcul(element.test);

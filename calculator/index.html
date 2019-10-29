@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>calculator</title>
+        <link rel="stylesheet" href="css/calculator.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="calculator">
+            <div class="operation_input">
+                <input type="text" name="operation" id="operation">
+            </div>
+            <input type="button" value="calcul" id="start_calcul">
+        </div>
+    </body>
+
+    <script type="module">
+        import Calculator from './modules/c2.mjs';
+
+        $("#start_calcul").click(function(){
+            $("p").remove();
+            let calcul = new Calculator($("#operation").val());
+            // if (isNaN(calcul.result))
+            //     $(".operation_input").append("<p>"+calcul.result+"</p>");
+            // else
+                for (const step of calcul.steps)
+                    $(".operation_input").append("<p>"+step+"</p>");
+        })
+    </script>
+</html>

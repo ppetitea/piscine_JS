@@ -1,0 +1,27 @@
+body {
+    display: flex;
+}
+#calculator {
+    margin: 20vh auto auto auto;
+    display: flex;
+    flex-direction: row;
+}
+.operation_input {
+    display: flex;
+    flex-direction: column;
+}
+#operation {
+    height: 20px;
+    width: 40vw;
+}
+#operation, p {
+    text-align: right;
+    padding-right: 1vw;
+}
+#start_calcul {
+    height: 26px;
+    width: 10vw;
+
+    padding: 0;
+    margin: 0;
+}
