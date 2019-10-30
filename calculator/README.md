@@ -8,3 +8,5 @@ Learnings :
 - jsDoc
 - driven test
 - jquery
+
+![calculator](.resources/git_illustrations/calculator.png "calculator")
