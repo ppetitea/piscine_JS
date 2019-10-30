@@ -1,3 +1,8 @@
+/**
+ * jsdoc command to generate javascript documentation:
+ * $> jsdoc -d=doc modules/calculator.mjs
+ */
+
 class Calculator {
 
     /**
