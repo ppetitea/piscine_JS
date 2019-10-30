@@ -9,4 +9,4 @@ Learnings :
 - driven test
 - jquery
 
-![calculator](.calculator/resources/calculator.png "calculator")
+![calculator](resources/calculator.png "calculator")
