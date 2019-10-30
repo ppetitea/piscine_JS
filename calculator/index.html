@@ -15,14 +15,14 @@
     </body>
 
     <script type="module">
-        import Calculator from './modules/c2.mjs';
+        import Calculator from './modules/calculator.mjs';
 
         $("#start_calcul").click(function(){
             $("p").remove();
             let calcul = new Calculator($("#operation").val());
-            // if (isNaN(calcul.result))
-            //     $(".operation_input").append("<p>"+calcul.result+"</p>");
-            // else
+            if (isNaN(calcul.result))
+                $(".operation_input").append("<p>"+calcul.result+"</p>");
+            else
                 for (const step of calcul.steps)
                     $(".operation_input").append("<p>"+step+"</p>");
         })
