@@ -27,9 +27,9 @@ p {
 }
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 20vmin);
+    grid-template-columns: repeat(3, 15vmin);
     grid-gap: 1vmin;
-    grid-auto-rows: 20vmin;
+    grid-auto-rows: 15vmin;
 }
 .box {
     background-color: rgba(255, 255, 255, 0.768);
@@ -38,21 +38,29 @@ p {
 }
 .circle {
     background-image: url("../resources/circle.svg") !important;
-    background-size: 17vmin !important;
-    background-color: rgb(226, 47, 47) !important;
+    background-size: 14vmin !important;
 }
 .circle_hover {
     background-image: url("../resources/circle.svg");
-    background-size: 17vmin;
+    background-size: 14vmin;
     background-color: rgb(226, 47, 47);
 }
 .cross {
     background-image: url("../resources/cross.svg") !important;
     background-size: cover !important;
-    background-color: rgb(0, 172, 0) !important;
 }
 .cross_hover {
     background-image: url("../resources/cross.svg");
     background-size: cover;
     background-color: rgb(0, 172, 0);
+}
+.green {
+    background-color: rgb(0, 172, 0) !important;
+}
+.red {
+    background-color: rgb(226, 47, 47) !important;
+}
+.results {
+    display: flex;
+    flex-direction: row;
 }

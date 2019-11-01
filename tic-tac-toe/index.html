@@ -24,46 +24,70 @@
                 <div class="box"></div>
             </div>
         </div>
+        <p class="result text"></p>
     </body>
     
     <script type="module">
         import TicTacToe from './modules/tic-tac-toe.mjs';
         
-        let is_cross = true;
         let game = new TicTacToe();
 
         $(".box").mouseover(function(){
-            if (is_cross)
-                $(this).addClass("cross_hover");
+            if (game.turn == 'green')
+                $(this).addClass(game.players.green.shape+"_hover");
             else
-                $(this).addClass("circle_hover");
+                $(this).addClass(game.players.red.shape+"_hover");
         });
         $(".box").mouseout(function(){
-                $(this).removeClass("cross_hover");
-                $(this).removeClass("circle_hover");
+                $(this).removeClass("cross_hover circle_hover");
         });
        
         $(".box").click(function(){
-            if (game.winner != 0 || game.loose)
-                window.location.reload();
-            if (game.winner == 0 && !$(this).hasClass("cross") && !$(this).hasClass("circle"))
-            {
-                if (is_cross)
-                {
-                    $(this).addClass("cross");
-                    game.update_map(1, $(this).index());
-                }
-                else
-                {
-                    $(this).addClass("circle");
-                    game.update_map(2, $(this).index());
-                }
-                if (game.winner != 0)
-                    $("body").append("<p class=\"text\">"+(is_cross ? "cross": "circle")+" win</p>");
-                else if (game.loose == true)
-                    $("body").append("<p class=\"text\">loose</p>");
-                is_cross = !is_cross;
-            }
+            game.update_map(game.turn, $(this).index());
+            update_view();
         })
+
+        update_view();
+
+        function update_view()
+        {
+            update_map_view();
+            update_result();
+        }
+
+        function update_map_view()
+        {
+            for (let i = 0; i < 9; i++)
+            {
+                $(".box:eq("+i+")").removeClass("cross circle green red");
+                if (game.map[i] == 'green')
+                {
+                    $(".box:eq("+i+")").addClass(game.players.green.shape);
+                    $(".box:eq("+i+")").addClass("green");
+                }
+                else if (game.map[i] == 'red')
+                {
+                    $(".box:eq("+i+")").addClass(game.players.red.shape);
+                    $(".box:eq("+i+")").addClass("red");
+                }
+            }
+        }
+
+        function update_result()
+        {
+            let green_score = "green " + game.players.green.score;
+            let red_score = "red " + game.players.red.score;
+            let score = green_score + " : " + red_score;
+            let result;
+
+            if (game.result.winner != '')
+                result = score + "<br><br>" + game.result.winner + " win";
+            else if (game.result.loose == true)
+                result = score + "<br><br>loose";
+            else
+                result = score;
+            $(".result").html(result);
+        }
+
     </script>
 </html>
