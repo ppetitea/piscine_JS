@@ -1,4 +1,10 @@
 # piscine_JS
 Personnal projects list to learn Javascript.
 
-[] Js calculator.
+[x] calculator.
+[x] tic-tac-toe.
+[ ] sudoku generator
+[ ] bricks breaking
+[ ] Tetris
+[ ] Blog
+[ ] online minishop
