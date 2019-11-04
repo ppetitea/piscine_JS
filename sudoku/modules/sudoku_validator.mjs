@@ -1,3 +1,12 @@
+/**
+ * check if value position is valid horizontaly, verticaly and in the box of sudoku grid named map
+ * 
+ * @function is_authorized_position
+ * @param {array} map - the sudoku grid
+ * @param {Object} pos - the position of value in sudoku grid
+ * @param {number} number - the value to check
+ * @callback {boolean} - if value safe (true) else (false)
+ */
 export function is_authorized_position(map, pos, number)
 {
     let box = {'x': parseInt(pos.x / 3) * 3, 'y': parseInt(pos.y / 3) * 3}
@@ -14,6 +23,13 @@ export function is_authorized_position(map, pos, number)
     return true;
 }
 
+/**
+ * check for each value of sudoku grid if position is valid horizontaly, verticaly and in the box
+ * 
+ * @function is_authorized_map
+ * @param {array} map - the sudoku grid
+ * @callback {boolean} - if grid safe (true) else (false)
+ */
 export function is_authorized_map(map)
 {
     for (let y = 0; y < 9; y++)
@@ -23,10 +39,4 @@ export function is_authorized_map(map)
                 return false;
     }
     return true;
-}
-
-export function count_solutions(map)
-{
-
-    
 }

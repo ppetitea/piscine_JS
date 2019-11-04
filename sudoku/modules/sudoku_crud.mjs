@@ -5,10 +5,16 @@ let cookie = new Cookie;
 let generator = new SudokuGenerator('medium');
 
 /**
- * Sudoku game class
+ * Sudoku game class to create save and update sudoku
  */
 class Sudoku {
 
+    /**
+     * if exist get cookie named sudoku and use cookie data to fill instance variables
+     * 
+     * @function getSudoku
+     * @callback {boolean} - if cookie exist (true) else (false);
+     */
     getSudoku()
     {
         let data = cookie.getValue("sudoku");
@@ -26,6 +32,11 @@ class Sudoku {
             return false;
     }
 
+    /**
+     * use instance variables to create/update a cookie name "sudoku"
+     * 
+     * @function saveSudoku
+     */
     saveSudoku()
     {
         cookie.set("sudoku", JSON.stringify({   'valid_map': this.valid_map,
@@ -34,17 +45,11 @@ class Sudoku {
                                                 'result': this.result}), 1);
     }
 
-    showSudoku()
-    {
-        let show;
-        for (let i = 0; i < 9; i++)
-        {
-            for (let j = 0; j < 9; j++)
-                show[i][j] = map[j / 3 + (i / 3) * 3][j % 3 + (i % 3) * 3];
-        }
-        console.log(show);
-    }
-
+    /**
+     * use SudokuGenerator class to generate new sudoku and fill instance variables
+     * 
+     * @function newSudoku
+     */
     newSudoku()
     {
         generator = new SudokuGenerator('medium');
@@ -54,6 +59,11 @@ class Sudoku {
         this.saveSudoku();
     }
 
+    /**
+     * the constructor of Sudoku class - if exist (get last sudoku) else (generate new sudoku)
+     * 
+     * @function constructor
+     */
     constructor()
     {
         this.result = {'win': false};

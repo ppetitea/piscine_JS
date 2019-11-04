@@ -1,24 +1,20 @@
-import {is_authorized_map ,is_authorized_position} from './sudoku_validator.mjs';
-import {deep_copy_2d} from './utils.mjs';
+import {is_authorized_position} from './sudoku_validator.mjs';
+import {deep_copy_2d, shuffle} from './utils.mjs';
 
-
+/**
+ * @class SudokuGenerator - generate 3 two dimensional array - 1.(valid_map=full grid) / 2.(epur_map=grid with empty box) / 3.(map=the grid to fill)
+ */
 class SudokuGenerator {
 
-    shuffle(array)
-    {
-        let tmp;
-        let random_index;
-
-        for (let current_index = array.length - 1; current_index >= 0; current_index--)
-        {
-            random_index = Math.floor(Math.random() * current_index);
-            tmp = array[current_index];
-            array[current_index] = array[random_index];
-            array[random_index] = tmp;
-        }
-        return array;
-    }
-
+    /**
+     * use backtracking to count the number of solutions of epur_soduku_grid
+     * 
+     * @function count_solutions
+     * @param {array} epur  - the grid whith random empty box 
+     * @param {array} map   - the current grid
+     * @param {number} x    - the curent x position in grid 
+     * @param {number} y    - the curent y position in grid
+     */
     count_solutions(epur, map, x, y)
     {
         if (y >= 9)
@@ -48,6 +44,14 @@ class SudokuGenerator {
         return false;
     }
 
+    /**
+     * randomly remove an amount of numbers in grid - use count_solution to valid remove operation
+     * 
+     * @function epur
+     * @param {array} valid_map - the full sudoku grid 
+     * @param {array} map - the current sudoku grid
+     * @param {number} number - the amount of wanted empty box
+     */
     epur(valid_map, map, number)
     {
         for (let i = 0; i < number; i++)
@@ -71,13 +75,21 @@ class SudokuGenerator {
         }
     }
 
+    /**
+     * use backtracking and shuffle to generate random sudoku grid
+     * 
+     * @function generate
+     * @param {array} map   - the current grid
+     * @param {number} x    - the curent x position in grid 
+     * @param {number} y    - the curent y position in grid
+     */
     generate(map, x, y)
     {
         if (y >= 9)
             return true;
         let next_x;
         let next_y;
-        let values = this.shuffle([1,2,3,4,5,6,7,8,9]);
+        let values = shuffle([1,2,3,4,5,6,7,8,9]);
 
         for (let i = 0; i < 9; i++)
         {
@@ -94,6 +106,14 @@ class SudokuGenerator {
         return false;
     }
 
+    /**
+     * use keyword (easy, medium, hard) to define the number of empty box in sudoku
+     * max supported is 50 beyond that the algorithm can not be sure to find a valid grid
+     * 
+     * @function get_empty_box_amount
+     * @param difficulty_level 
+     * @callback {number} - the number of empty box in the sudoku
+     */
     get_empty_box_amount(difficulty_level)
     {
         if (difficulty_level == 'hard')
@@ -106,6 +126,12 @@ class SudokuGenerator {
             return 35;
     }
 
+    /**
+     * generate new valid random sudoku 
+     * 
+     * @function constructor
+     * @param {number} difficulty_level - the asked difficulty of generated sudoku
+     */
     constructor(difficulty_level)
     {
         this.solutions_count = 0;
