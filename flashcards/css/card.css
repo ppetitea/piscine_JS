@@ -1,0 +1,199 @@
+/* RESET */
+
+
+
+.success {
+    background: rgb(28, 184, 65);
+}
+.error {
+    background: rgb(202, 60, 60);
+}
+.warning {
+    background: rgb(223, 117, 20);
+}
+.primary {
+    background: rgb(34,34,34);
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+input {
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+/* MEDIA */
+
+@media (min-aspect-ratio: 1/1) {
+    .card {
+        width: 88vmin;
+        height: 62vmin;
+    }
+    textarea {
+        width: 75vmin;
+        height: 23vmin;
+    }
+}
+@media (max-aspect-ratio: 1/1) {
+    .card {
+        width: 62vmin;
+        height: 88vmin;
+    }
+    textarea {
+        width: 60vmin;
+        height: 37vmin;
+    }
+}
+
+/* PAGE */
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+
+}
+
+/* VIEW */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 0 2vmin;
+    border-radius: 4vmin;
+    box-shadow: 0 .25rem .25rem rgba(0,0,0,0.6),
+    0 0 1rem rgba(0,0,0,0.6);
+    overflow: hidden;
+    background-color: white;
+}
+
+/* --> QUESTIONS */
+.questions {
+    margin: 0 auto;
+}
+.text_question {
+    text-align: center;
+    font-family: 'Yeon Sung', cursive;
+    font-size: 7vmin;
+    color: rgb(51, 51, 51);
+    text-shadow:  0 .25rem .25rem rgba(0,0,0,0.1),
+    0 0 1rem rgba(0,0,0,0.1);
+}
+
+/* --> ANSWER */
+.answers {
+    margin: auto;
+}
+.code_answer {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 2vmin;
+    text-align: left;
+}
+.text_answer {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 3vmin;
+    height: 22vmin;
+    width: 60vmin;
+    color: gray;
+}
+.word_answer {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 5vmin;
+    height: 22vmin;
+    width: 60vmin;
+    color: gray;
+}
+.option {
+    display: flex;
+    flex-direction: row;
+}
+.boolean_button {
+    width: 8vmin;
+    margin: auto 5vmin;
+    outline: none;
+}
+.boolean_button:hover {
+    filter: invert(50%);
+}
+.answer_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);;
+    grid-auto-flow: column;
+    gap: 2vmin;
+}
+.list_answer .new_button {
+    margin: 0 auto;
+    width: 4vmin;
+} 
+.element {
+    width: 15vmin;
+}
+
+/* CONTROLS */
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    width: 62vmin;
+    margin: auto;
+}
+
+.button {
+    margin: auto;
+}
+
+/* --> NAVIGATION */
+
+.nav_wrapper {
+    position: absolute;
+    display: flex;
+    filter: brightness(0.2);
+}
+.nav_up {
+    top: 4vmin;
+    width: 100vw;
+}
+.nav_right {
+    right: 4vmin;
+    height: 100vh;
+}
+.nav_down {
+    bottom: 4vmin;
+    width: 100vw;
+}
+.nav_left {
+    left: 4vmin;
+    height: 100vh;
+}
+
+/* BUTTONS */
+.up_button {
+    margin: auto;
+    width: 4vmin;
+    max-width: 20px;
+}
+.right_button {
+    margin: auto;
+    width: 3vmin;
+    max-width: 15px;
+}
+.down_button {
+    margin: auto;
+    width: 4vmin;
+    max-width: 20px;
+}
+.left_button {
+    margin: auto;
+    width: 3vmin;
+    max-width: 15px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flashcard training</title>
+        <link rel="stylesheet" href="../css/training.css">
+        <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="view_wrapper">
+            <div class="view"></div>
+        </div>
+    </body>
+    <script type="module">
+
+        import Cookie from './../modules/cookies.mjs'
+
+        let cookie = new Cookie();
+
+        function    get_training()
+        {
+            let tmp;
+
+            if (!(tmp = cookie.getValue('training')))
+            {
+                cookie.set('training', JSON.stringify({'index': 0}), 1);
+                return {'index': 0};
+            }    
+            return (JSON.parse(tmp));
+        }
+        function    get_form(card)
+        {
+            let ret = '';
+
+            if (card.type == 'option')
+            {
+                for (const item of card.answer.split(' '))
+                   ret = ret + "<li class='option'>"+item+"</li>";
+                return "<ul>"+ret+"</ul>";
+            }
+            if (card.type == 'list')
+            {
+                for (const item of card.answer.split(' '))
+                   ret = ret + "<li class='list'>"+item+"</li>";
+                return "<ul>"+ret+"</ul>";
+            }
+            if (card.type == 'code')
+                return "<textarea class='code accept_tab' placeholder='write your code here..' spellcheck=false>"+card.answer+"</textarea>";
+            if (card.type == 'string')
+                return "<textarea class='string' placeholder='write your text here..' spellcheck=false>"+card.answer+"</textarea>";
+            if (card.type == 'word')
+                return "<textarea class='word' placeholder='word..' maxlength='26' spellcheck=false>"+card.answer+"</textarea>";
+            if (card.type == 'bool')
+                return "<textarea class='bool' placeholder='true or false..' spellcheck=false>"+card.answer+"</textarea>";
+        }
+        function    fill_focused_card(id)
+        {
+            $('.view').css("transform", `translateX(${-id * 33.75}vmin)`);
+            $('#'+id).addClass('focused_card');
+            $('.focused_card').css('grid-column', (id + 1) + ' / ' + (id + 3));
+            $('#'+id).append("\
+                <h4 class='question'>"+cards[id].question+"</h4>"+ get_form(cards[id])+
+                "<input type='image' class='button' src='./../resources/check.svg'>");
+        }
+
+        let cards = JSON.parse(localStorage.getItem('training_cards'));
+        let amount = Object.entries(cards).length;
+        let training = get_training();
+
+        $('.view').children().remove();
+        for (const [id, card] of Object.entries(cards))
+            $('.view').append("<div id='"+id+"' class='card primary'></div>");
+        fill_focused_card(training.index);
+
+        $(document).on('click', '.button', function(){
+
+            $('#'+training.index).children().remove();
+            $('#'+training.index).removeClass('focused_card');
+            $('#'+training.index).css('grid-column', '');
+            console.log(cards);
+            training.index = (training.index + 1) % amount;
+            fill_focused_card(training.index);
+        })
+        // $('.view').css("transform", `translateX(45vmin)`); 
+        $(document).on('keydown', '.accept_tab', function(e) {
+            if(e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                var start = this.selectionStart;
+                var end = this.selectionEnd;
+
+                var $this = $(this);
+                var value = $this.val();
+
+                // set textarea value to: text before caret + tab + text after caret
+                $this.val(value.substring(0, start)
+                            + "\t"
+                            + value.substring(end));
+
+                // put caret at right position again (add one for the tab)
+                this.selectionStart = this.selectionEnd = start + 1;
+
+                // prevent the focus lose
+                e.preventDefault();
+            }
+        });
+    </script>
+</html>

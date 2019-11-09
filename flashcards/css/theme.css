@@ -1,0 +1,136 @@
+:root {
+    --background-color: #121212;
+    --card-color: rgb(34,34,34);
+    --form-color: rgb(3,218,197);
+    --font-color: #BB86FC;
+    --font-color-focus: #BB86FC;
+    --placeholder-color: rgb(3,218,197);
+    --trash-url: url('../resources/trash_dark.svg');
+    --trash_hover-url: url('../resources/trash_dark_hover.svg');
+    --out-url: url('../resources/out_dark.svg');
+    --out_hover-url: url('../resources/out_dark_hover.svg');
+    --check-url: url('../resources/check_dark.svg');
+    --check_hover-url: url('../resources/check_dark_hover.svg');
+    --box-shadow: none;
+    --box-shadow-hover: 2px 2px #BB86FC, -2px -2px #BB86FC, -2px 2px #BB86FC, 2px -2px #BB86FC;
+    --text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    --svg-filter: invert(0); 
+    --svg-filter-hover: invert(0); 
+}
+[data-theme="light"] {
+    --background-color: #085a9d;
+    --card-color: #0b78d1;
+    --form-color: #074b83;
+    --font-color: #d2eafd;
+    --font-color-focus: white;
+    --placeholder-color: #79bff8;
+    --trash-url: url('../resources/trash.svg');
+    --trash_hover-url: url('../resources/trash_blue.svg');
+    --out-url: url('../resources/out.svg');
+    --out_hover-url: url('../resources/out_blue.svg');
+    --check-url: url('../resources/check.svg');
+    --check_hover-url: url('../resources/check_blue.svg');
+    --box-shadow: 0 .25rem .25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
+    --box-shadow-hover: 0 .25rem .25rem rgba(0,0,0,0.6), 0 0 1rem rgba(0,0,0,0.6);
+    --text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    --svg-filter: invert(1); 
+    --svg-filter-hover: invert(0); 
+}
+
+body {
+    background-color: var(--background-color);
+}
+.card {
+    border-radius: 0.7vmin;
+    background-color: var(--card-color);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}
+.tool_card {
+    border-radius: 0.7vmin;
+    background-color: var(--card-color);
+    box-shadow: var(--box-shadow);
+}
+.tool_card:hover, .card:hover {
+    box-shadow: var(--box-shadow-hover);
+    text-shadow: var(--box-shadow);
+}
+.theme {
+    color: var(--font-color);
+    outline: none;
+}
+.button {
+    background-size: contain;
+    cursor: pointer;
+    filter: var(--svg-filter);
+}
+.button:hover {
+    filter: var(--svg-filter-hover);
+}
+.button::before {
+    position: absolute;
+    width: 5vmax;
+    height: 5vmax;
+    content: '';
+    transform: translate(-50%, -50%);
+}
+.trash_button {
+    background-image: var(--trash-url);
+}
+.trash_button:hover {
+    background-image: var(--trash_hover-url);
+}
+.out_button {
+    background-image: var(--out-url);
+}
+.out_button:hover {
+    background-image: var(--out_hover-url);
+}
+.check_button {
+    background-image: var(--check-url);
+}
+.check_button:hover {
+    background-image: var(--check_hover-url);
+}
+.button-training {
+    border: var(--font-color) solid;
+    border-radius: 4px;
+    text-shadow: var(--box-shadow);
+    background: transparent;
+    color: var(--font-color);
+    outline: none;
+}
+.button-active:hover {
+    color: var(--form-color);
+    border-color: var(--form-color);
+    cursor: pointer;
+}
+div > * {
+    font-family: 'Yeon Sung', cursive;
+    font-weight: bold;
+    color: var(--font-color);
+}
+::placeholder {
+    color: var(--form-color);
+}
+textarea, input {
+    color: var(--form-color);
+}
+.little_text {
+    font-size: 1vw;
+}
+.medium_text {
+    font-size: 1.5vw;
+}
+.big_text {
+    font-size: 3vw;
+}
+.huge_text {
+    font-size: 5vw;
+}
+.option_input {
+    color: var(--form-color);
+}
+.option_checked {
+    color: var(--font-color);
+}

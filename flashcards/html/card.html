@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flashcards</title>
+        <link rel="stylesheet" href="../css/card.css">
+        <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="card">
+            <div class="questions">
+                <h1 class="text_question text">Who have the best peach ?</h1>
+            </div>
+            <div class="answers">
+                <!-- <textarea class="text_answer" alt="anser" spellcheck="false"></textarea> -->
+                <!-- <textarea class="code_answer accept_tab" alt="anser" spellcheck="false"></textarea> -->
+                <textarea class="word_answer" alt="anser" spellcheck="false"></textarea>
+                <!-- <div class="option_answer answer_grid">
+                        <div class="option"><input type="radio" id="option1" class="option" name="option" value="option1" checked><label for="option1" class="option">Option1</label></div>
+                        <div class="option"><input type="radio" id="option2" class="option" name="option" value="option2"><label for="option2" class="option">Option2</label></div>
+                        <div class="option"><input type="radio" id="option3" class="option" name="option" value="option3"><label for="option3" class="option">Option3</label></div>
+                        <div class="option"><input type="checkbox" id="option4" class="option" name="option" value="option4"><label for="option4" class="option">Option4</label></div>
+                        <div class="option"><input type="checkbox" id="option4" class="option" name="option" value="option4"><label for="option4" class="option">Option4</label></div>
+                        <div class="option"><input type="checkbox" id="option4" class="option" name="option" value="option4"><label for="option4" class="option">Option4</label></div>
+                </div> -->
+                <!-- <div class="boolean_answer">
+                    <input type="image" id="true" class="true boolean_button" alt="true" src="./../resources/true2.svg">
+                    <input type="image" id="false" class="false boolean_button" alt="false" src="./../resources/false2.svg">
+                </div> -->
+                <!-- <div class="list_answer answer_grid">
+                    <input type="text" name="element1" class="element">
+                    <input type="image" class="new_button" alt="new" src="./../resources/new.svg">
+                </div> -->
+            </div>
+            <div class="controls">
+                <!-- <input type="image" class="reset_button button" alt="reset" src="./../resources/refresh.svg"> -->
+                <input type="image" class="check_button button" alt="check" src="./../resources/check.svg">
+            </div>
+        </div>
+        <div class="nav_up nav_wrapper"><input type="image" class="up_button nav_button" alt="up" src="./../resources/up.svg"></div>
+        <div class="nav_right nav_wrapper"><input type="image" class="right_button nav_button" alt="right" src="./../resources/right.svg"></div>
+        <div class="nav_down nav_wrapper"><input type="image" class="down_button nav_button" alt="down" src="./../resources/down.svg"></div>
+        <div class="nav_left nav_wrapper"><input type="image" class="left_button nav_button" alt="left" src="./../resources/left.svg"></div>
+    </body>
+    <script>
+        $("accept_tab").keydown(function(e) {
+            if(e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                var start = this.selectionStart;
+                var end = this.selectionEnd;
+
+                var $this = $(this);
+                var value = $this.val();
+
+                // set textarea value to: text before caret + tab + text after caret
+                $this.val(value.substring(0, start)
+                            + "\t"
+                            + value.substring(end));
+
+                // put caret at right position again (add one for the tab)
+                this.selectionStart = this.selectionEnd = start + 1;
+
+                // prevent the focus lose
+                e.preventDefault();
+            }
+        });
+    </script>
+</html>

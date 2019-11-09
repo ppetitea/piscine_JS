@@ -4,9 +4,10 @@ Personnal projects list to learn Javascript.
 [x] calculator.<br>
 [x] tic-tac-toe.<br>
 [x] sudoku generator.<br>
+[ ] flashcards.<br>
+[ ] project roadmap.<br>
 [ ] clock.<br>
 [ ] todolist.<br>
-[ ] flashcards.<br>
 [ ] interactive map.<br>
 [ ] maze generator.<br>
 [ ] login authentification.<br>

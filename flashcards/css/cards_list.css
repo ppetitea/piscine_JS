@@ -1,0 +1,155 @@
+/* RESET */
+
+input {
+    outline: none;
+    border: none;
+    text-align: center;
+}
+textarea {
+    text-align: center;
+}
+
+/* PAGE */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* VIEW */
+
+/* --> CARDS */
+.view {
+    height: 90vh;
+    width: 90vw;
+    margin: 5vh 5vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 12.4vmax);
+    grid-template-rows: 17.2vmax;
+    justify-content: center;
+    align-content: start;
+    gap: 2vmax;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 12.4vmax;
+    height: 17.2vmax;
+    margin: auto;
+    border-radius: 0.7vmin;
+    overflow: hidden;
+
+}
+.tool_card {
+    width: 26.8vmax;
+    height: 36.4vmax;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    display: grid;
+    grid-auto-columns: 1fr;
+    justify-content: center;
+    align-content: space-around;
+    margin: auto;
+    border-radius: 0.7vmin;
+    overflow: hidden;
+}
+.tool_card > * {
+    width: 26.8vmax;
+    height: 36.4vmax;
+    align-content: space-around;
+}
+.menu {
+    display: grid;
+}
+
+/* --> BUTTONS */
+.theme {
+    position: absolute;
+    right: 1vmin;
+    top: 1vmin;
+    background: transparent;
+    border: none;
+}
+.controls {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.button {
+    position: absolute;
+    /* padding: 2vmax; */
+    /* transform: translate(-2vmax, -2vmax); */
+}
+.check_button {
+    width: 2vmax;
+    height: 2vmax;
+    margin-inline-start: 24.2vmax;
+    margin-block-start: 34vmax;
+}
+.out_button {
+    width: 1.6vmax;
+    height: 1.6vmax;
+    margin-inline-start: 0.5vmax;
+    margin-block-start: 34vmax;
+}
+.trash_button {
+    margin-inline-start: 0.5vmax;
+    margin-block-start: 0.5vmax;
+    width: 2vmax;
+    height: 2vmax;
+}
+.button-training {
+    font-size: 1.5vmax;
+    margin: auto;
+    width: 15vmax;
+    height: 3vmax;
+}
+
+/* --> TEXTS */
+.text {
+    font-family: 'Yeon Sung', cursive;
+    font-weight: bold;
+}
+.little_text {
+    font-size: 1vw;
+}
+.medium_text {
+    font-size: 1.5vw;
+}
+.big_text {
+    font-size: 2vw;
+}
+.huge_text {
+    font-size: 5vw;
+}
+
+/* --> FORMS */
+.form_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.form_title {
+    margin: 0 auto;
+}
+.form_content {
+    margin: auto;
+    width: 90%;
+    vertical-align: middle;
+}
+
+/* FLEXBOX */
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* ALIGNEMENT */
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+.center_verticaly {
+    margin: auto 0;
+}

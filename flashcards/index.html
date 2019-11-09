@@ -2,10 +2,88 @@
 <html>
     <head>
         <title>flashcards</title>
-        <link rel="stylesheet" href="css/flashcard.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/cards_list.css">
+        <!-- <link rel="stylesheet" href="css/dark_theme.css"> -->
+        <link rel="stylesheet" href="css/theme.css">
+        <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
-        
+       <div class="view">
+           <div class="tool_card">
+               <div class='menu'>
+                    <h4 class="card_title title big_text center shadow_hover">Flashcards</h4>
+                    <h4 class="menu_card_info center categories_amount">amount of categories</h4>
+                    <h4 class="menu_card_info center cards_amount">amount of cards in all categorie</h4>
+                    <button class="button-training text cards_ready_amount">Memorization training Button</button>
+                </div>
+               <div class='category_form'>
+                    <div class='form_wrapper new_category_title'>
+                        <span class='form_title text medium_text'>category title</span>
+                        <textarea class='form_content text medium_text center shadow_hover' placeholder='write your category name...' spellcheck=false></textarea>
+                    </div>
+               </div>
+               <div class='category_infos'>
+                    <textarea class='card_title form_content text big_text center shadow_hover' placeholder='write your category name...' spellcheck=false></textarea>
+                    <span class='center shadow_hover text medium_text cards_amount'>amount of cards in this categorie</span>
+                    <button class="button-training text cards_ready_amount">Memorization training Button</button>
+               </div>
+               <div class='card_form'>
+                    <div class='form_wrapper new_card_question'>
+                        <span class='form_title text medium_text'>card question</span>
+                        <textarea class='form_content text medium_text center shadow_hover string_input' placeholder='write your question...' spellcheck=false></textarea>
+                    </div>
+                    <div class='form_wrapper new_card_type'>
+                        <span class='form_title text medium_text'>card type</span>
+                        <div class='row center_verticaly'>
+                            <span class='option_input option_checked text center medium_text shadow_hover string'>string</span>
+                            <span class='option_input text center medium_text shadow_hover word'>word</span>
+                            <span class='option_input text center medium_text shadow_hover code'>code</span>
+                            <span class='option_input text center medium_text shadow_hover bool'>bool</span>
+                            <span class='option_input text center medium_text shadow_hover list'>list</span>
+                            <span class='option_input text center medium_text shadow_hover option'>option</span>
+                        </div>
+                    </div>
+                    <div class='form_wrapper new_card_answer'>
+                        <span class='form_title text medium_text'>card answer</span>
+                        <textarea class='form_content text medium_text center shadow_hover string_input' placeholder='write your text here...' spellcheck=false></textarea>
+                    </div>
+               </div>
+               <div class='card_infos'>
+                    <div class='form_wrapper card_question'>
+                        <span class='form_title text medium_text'>card question</span>
+                        <textarea class='form_content text medium_text center shadow_hover string_input' placeholder='write your question...' spellcheck=false></textarea>
+                    </div>
+                    <div class='form_wrapper card_type'>
+                        <span class='form_title text medium_text'>card type</span>
+                        <div class='row center_verticaly'>
+                            <span class='option_input option_checked text center medium_text shadow_hover string'>string</span>
+                            <span class='option_input text center medium_text shadow_hover word'>word</span>
+                            <span class='option_input text center medium_text shadow_hover code'>code</span>
+                            <span class='option_input text center medium_text shadow_hover bool'>bool</span>
+                            <span class='option_input text center medium_text shadow_hover list'>list</span>
+                            <span class='option_input text center medium_text shadow_hover option'>option</span>
+                        </div>
+                    </div>
+                    <div class='form_wrapper card_answer'>
+                        <span class='form_title text medium_text'>card answer</span>
+                        <textarea class='form_content text medium_text center shadow_hover string_input' placeholder='write your answer here...' spellcheck=false></textarea>
+                    </div>
+                    <div class='form_wrapper card_remaining_days'>
+                        <span class='form_title text medium_text'>card remaining days</span>
+                        <textarea class='form_content text medium_text center shadow_hover string_input' placeholder='write remaining days here...' spellcheck=false></textarea>
+                    </div>
+               </div>
+               <div class='controls'>
+                    <button class='trash_button button'></button>
+                    <button class='out_button button'></button>
+                    <button class='check_button button'></button>
+                </div>
+           </div>
+       </div>
+        <button class="theme">dark</button>
     </body>
+    
+    <script type="module" src="js/flashcards.js"></script>
 </html>
