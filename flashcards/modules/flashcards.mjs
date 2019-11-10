@@ -1,9 +1,11 @@
-import Flashcard from './../modules/flashcard.mjs'
-
 export function update_category(category_id, category_to_update)
 {
     let categories = JSON.parse(localStorage.getItem('categories'));
+    let flashcards = JSON.parse(localStorage.getItem('flashcards'));
 
+    for (const flashcard of flashcards)
+        if (flashcard.category == categories[category_id])
+            flashcard.category = category_to_update; 
     categories[category_id] = category_to_update;
     localStorage.setItem('categories', JSON.stringify(categories));
 }
@@ -32,8 +34,16 @@ export function save_category(category)
 
 export function save_flashcard(category, question, type, answer)
 {
-    let flashcard = new Flashcard(category, question, type, answer);
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
+    let date = new Date;
+    let flashcard = {'id': get_new_flashcard_id(),
+                    'category': category,
+                    'question': question,
+                    'type': type,
+                    'answer': answer,
+                    'creation_date': date.getTime(),
+                    'next_memorization': date.getTime() + (1000 * 60 * 60 * 24),
+                    'repetition_delay': 'day'};
 
     if (flashcards == undefined)
         flashcards = [flashcard];
@@ -69,18 +79,35 @@ export function    delete_category(category)
 
 export function save_training_cards(category)
 {
+    let date = new Date;
+    let category_cards = [];
     if (category == 'all')
-        localStorage.setItem('training_cards', localStorage.getItem('flashcards'));
+        category_cards = JSON.parse(localStorage.getItem('flashcards'));
     else
     {
         let flashcards = JSON.parse(localStorage.getItem('flashcards'));
-        let cards = [];
 
         for (const flashcard of flashcards)
             if (flashcard.category == category)
-                cards.push(flashcard);
-        localStorage.setItem('training_cards', JSON.stringify(cards));
+                category_cards.push(flashcard);
     }
+    let training_cards = [];
+    for (const index in category_cards)
+        if (parseInt((category_cards[index].next_memorization - date.getTime()) / (1000 * 60 * 60 * 24)) <= 0)
+            training_cards.push(category_cards[index]);        
+    localStorage.setItem('training_cards', JSON.stringify(training_cards));
+}
+
+function get_new_flashcard_id()
+{
+    let id = JSON.parse(localStorage.getItem('flashcard_id'));
+
+    if (id == undefined)
+        id = 0;
+    else
+        id++;    
+    localStorage.setItem('flashcard_id', JSON.stringify(id));
+    return id;
 }
 
 export function get_categories_stats()
@@ -107,7 +134,7 @@ export function get_categories_stats()
                 }
             }
         }
-        stats['all'] = all;
     }
+    stats['all'] = all;
     return stats;
 }

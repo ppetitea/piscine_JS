@@ -28,7 +28,6 @@ export function    empty_main_card_content_view()
 export function    show_menu_view()
 {
     let stats = get_categories_stats();
-
     $('.menu').css('display', 'grid');
     $('.menu').children('.categories_amount').html(Object.keys(stats).length - 1 + ' categories..');
     $('.menu').children('.cards_amount').html(stats.all.cards + ' cards..');

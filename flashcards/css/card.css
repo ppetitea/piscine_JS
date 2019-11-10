@@ -12,9 +12,8 @@
     background: rgb(223, 117, 20);
 }
 .primary {
-    background: rgb(34,34,34);
+    background: #0078e7;
 }
-
 textarea {
     resize: none;
     outline: none;

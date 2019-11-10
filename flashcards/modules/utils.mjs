@@ -31,3 +31,17 @@ export function limit(number, min, max)
         return max + number % (max - min);
     return number;
 }
+
+export function is_array_contain_same_values(array1, array2)
+{
+    if (array1.length != array2.length)
+        return false;
+    
+    let array1_sort = array1.sort();
+    let array2_sort = array2.sort();
+
+    for (let i = 0; i < array1.length; i++)
+        if (array1_sort[i] != array2_sort[i])
+            return false;
+    return true;
+}

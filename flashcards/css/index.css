@@ -7,6 +7,7 @@ input {
 }
 textarea {
     text-align: center;
+    height: 10vmin;
 }
 
 /* PAGE */

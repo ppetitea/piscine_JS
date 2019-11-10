@@ -3,14 +3,14 @@
     <head>
         <title>flashcards</title>
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/cards_list.css">
-        <!-- <link rel="stylesheet" href="css/dark_theme.css"> -->
-        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/index-theme.css">
         <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
        <div class="view">
+        <script src="js/load-page.js"></script>
            <div class="tool_card">
                <div class='menu'>
                     <h4 class="card_title title big_text center shadow_hover">Flashcards</h4>
@@ -42,7 +42,6 @@
                             <span class='option_input text center medium_text shadow_hover code'>code</span>
                             <span class='option_input text center medium_text shadow_hover bool'>bool</span>
                             <span class='option_input text center medium_text shadow_hover list'>list</span>
-                            <span class='option_input text center medium_text shadow_hover option'>option</span>
                         </div>
                     </div>
                     <div class='form_wrapper new_card_answer'>
@@ -63,7 +62,6 @@
                             <span class='option_input text center medium_text shadow_hover code'>code</span>
                             <span class='option_input text center medium_text shadow_hover bool'>bool</span>
                             <span class='option_input text center medium_text shadow_hover list'>list</span>
-                            <span class='option_input text center medium_text shadow_hover option'>option</span>
                         </div>
                     </div>
                     <div class='form_wrapper card_answer'>
@@ -85,5 +83,5 @@
         <button class="theme">dark</button>
     </body>
     
-    <script type="module" src="js/flashcards.js"></script>
+    <script type="module" src="js/flashcards_events.js"></script>
 </html>

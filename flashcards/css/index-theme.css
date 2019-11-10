@@ -37,6 +37,10 @@
     --svg-filter-hover: invert(0); 
 }
 
+.theme {
+    color: var(--font-color);
+    outline: none;
+}
 body {
     background-color: var(--background-color);
 }
@@ -54,10 +58,6 @@ body {
 .tool_card:hover, .card:hover {
     box-shadow: var(--box-shadow-hover);
     text-shadow: var(--box-shadow);
-}
-.theme {
-    color: var(--font-color);
-    outline: none;
 }
 .button {
     background-size: contain;
