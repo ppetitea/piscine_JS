@@ -12,7 +12,7 @@ Learnings :
 - Dark/light theme
 - css design
 
-<img src="./resources/menu_dark.png" width="480">
-<img src="./resources/menu_light.png" width="480">
-<img src="./resources/category_dark.png" width="480">
-<img src="./resources/category_light.png" width="480">
+<img src="./resources/menu_dark.png" width="800">
+<img src="./resources/menu_light.png" width="800">
+<img src="./resources/category_dark.png" width="800">
+<img src="./resources/category_light.png" width="800">
