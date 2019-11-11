@@ -7,7 +7,7 @@
  * @param {number} number - the value to check
  * @callback {boolean} - if value safe (true) else (false)
  */
-export function is_authorized_position(map, pos, number)
+function is_authorized_position(map, pos, number)
 {
     let box = {'x': parseInt(pos.x / 3) * 3, 'y': parseInt(pos.y / 3) * 3}
 
@@ -30,7 +30,7 @@ export function is_authorized_position(map, pos, number)
  * @param {array} map - the sudoku grid
  * @callback {boolean} - if grid safe (true) else (false)
  */
-export function is_authorized_map(map)
+function is_authorized_map(map)
 {
     for (let y = 0; y < 9; y++)
     {

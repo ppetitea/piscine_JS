@@ -1,6 +1,3 @@
-import Cookie from './cookies.mjs';
-import SudokuGenerator from './sudoku_generator.mjs';
-
 let cookie = new Cookie;
 let generator = new SudokuGenerator('medium');
 
@@ -72,5 +69,3 @@ class Sudoku {
     }
 
 }
-
-export default Sudoku;

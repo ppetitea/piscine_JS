@@ -1,5 +1,3 @@
-import {is_authorized_position} from './sudoku_validator.mjs';
-import {deep_copy_2d, shuffle} from './utils.mjs';
 
 /**
  * @class SudokuGenerator - generate 3 two dimensional array - 1.(valid_map=full grid) / 2.(epur_map=grid with empty box) / 3.(map=the grid to fill)
@@ -155,5 +153,3 @@ class SudokuGenerator {
     }
 
 }
-
-export default SudokuGenerator; 

@@ -5,7 +5,7 @@
  * @param {Array} src - the 2 dimensional array to copy
  * @callback {Array} - new 2d array with differents references in memory
  */
-export function deep_copy_2d(src)
+function deep_copy_2d(src)
 {
     let ret = new Array();
 
@@ -23,7 +23,7 @@ export function deep_copy_2d(src)
  * @param {number} max - the maximum limit
  * @callback {number} - the result of number in loop overflow
  */
-export function limit(number, min, max)
+function limit(number, min, max)
 {
     if (number >= max)
         return min + number % (max - min);
@@ -38,7 +38,7 @@ export function limit(number, min, max)
  * @param {array} array the array to sort random
  * @callback {array} the array randomly sort
  */
-export function shuffle(array)
+function shuffle(array)
 {
     let tmp;
     let random_index;

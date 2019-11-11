@@ -211,5 +211,3 @@ class Calculator {
             this.result = this.steps[this.steps.length - 1];
     }
 }
-// module.exports =  Calculator;
-export default Calculator

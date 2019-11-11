@@ -1,8 +1,5 @@
 /**  INCLUDES  **/
 
-import Sudoku from '../modules/sudoku_crud.mjs';
-import {deep_copy_2d, limit} from './../modules/utils.mjs';
-
 let game = new Sudoku();
 
 /**  UTILS  **/

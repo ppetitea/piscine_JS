@@ -1,5 +1,3 @@
-import Cookie from './cookies.mjs';
-
 let cookie = new Cookie;
 
 /**
@@ -135,5 +133,3 @@ class TicTacToe {
                     'empty','empty','empty'];
     }
 }
-
-export default TicTacToe
