@@ -1,4 +1,4 @@
-export function update_category(category_id, category_to_update)
+function update_category(category_id, category_to_update)
 {
     let categories = JSON.parse(localStorage.getItem('categories'));
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
@@ -10,7 +10,7 @@ export function update_category(category_id, category_to_update)
     localStorage.setItem('categories', JSON.stringify(categories));
 }
 
-export function update_flashcard(flashcard_id, question, type, answer, remaining_days)
+function update_flashcard(flashcard_id, question, type, answer, remaining_days)
 {
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
     let date = new Date;
@@ -21,7 +21,7 @@ export function update_flashcard(flashcard_id, question, type, answer, remaining
     flashcards[flashcard_id].next_memorization = date.getTime() + (remaining_days * (24 * 60 * 60 * 1000));
     localStorage.setItem('flashcards', JSON.stringify(flashcards));
 }
-export function save_category(category)
+function save_category(category)
 {
     let categories = JSON.parse(localStorage.getItem('categories'));
 
@@ -32,7 +32,7 @@ export function save_category(category)
     localStorage.setItem('categories', JSON.stringify(categories));
 }
 
-export function save_flashcard(category, question, type, answer)
+function save_flashcard(category, question, type, answer)
 {
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
     let date = new Date;
@@ -52,7 +52,7 @@ export function save_flashcard(category, question, type, answer)
     localStorage.setItem('flashcards', JSON.stringify(flashcards));
 }
 
-export function    delete_flashcard(card_id)
+function    delete_flashcard(card_id)
 {
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
     
@@ -60,7 +60,7 @@ export function    delete_flashcard(card_id)
     localStorage.setItem('flashcards', JSON.stringify(flashcards));
 }
 
-export function    delete_category(category)
+function    delete_category(category)
 {
     let categories = JSON.parse(localStorage.getItem('categories'));
     let flashcards = JSON.parse(localStorage.getItem('flashcards'));
@@ -77,7 +77,7 @@ export function    delete_category(category)
     }
 }
 
-export function save_training_cards(category)
+function save_training_cards(category)
 {
     let date = new Date;
     let category_cards = [];
@@ -110,7 +110,7 @@ function get_new_flashcard_id()
     return id;
 }
 
-export function get_categories_stats()
+function get_categories_stats()
 {
     let stats = [];
     let date = new Date;

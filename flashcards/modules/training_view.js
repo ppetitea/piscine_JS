@@ -1,18 +1,15 @@
-import Cookie from "./../modules/cookies.mjs";
-import { is_array_contain_same_values } from "./../modules/utils.mjs";
-
-export function initialize_view(flashcard_id) {
+function initialize_view(flashcard_id) {
   show_flashcard_form_view(flashcard_id);
   show_steps_view();
 }
 
-export function show_flashcard_form_view(flashcard_id) {
+function show_flashcard_form_view(flashcard_id) {
   let flashcards = JSON.parse(localStorage.getItem("training_cards"));
 
   update_card_view(get_flashcard_form_view(flashcards[flashcard_id]));
 }
 
-export function show_steps_view() {
+function show_steps_view() {
   let flashcards = JSON.parse(localStorage.getItem("training_cards"));
 
   for (const [id, flashcard] of Object.entries(flashcards))
@@ -33,7 +30,7 @@ function update_card_view(html_insertion) {
   $(".card_view").prepend(html_insertion);
 }
 
-export function get_flashcard_form_view(flashcard) {
+function get_flashcard_form_view(flashcard) {
   let html_question = "<h4 class='question'>" + flashcard.question + " </h4>";
   let html_form = "";
 
@@ -67,7 +64,7 @@ function get_list_form_view(answers_id) {
   return "<div class='answer list_wrapper'>" + html_form + "</div>";
 }
 
-export function get_form_answer_result(flashcard) {
+function get_form_answer_result(flashcard) {
   if (
     flashcard.type == "string" ||
     flashcard.type == "word" ||
@@ -86,7 +83,7 @@ export function get_form_answer_result(flashcard) {
     );
 }
 
-export function update_flashcard_remaining_days(flashcard, result) {
+function update_flashcard_remaining_days(flashcard, result) {
   let flashcards = JSON.parse(localStorage.getItem("flashcards"));
   let date = new Date();
 
@@ -116,13 +113,13 @@ export function update_flashcard_remaining_days(flashcard, result) {
   localStorage.setItem("flashcards", JSON.stringify(flashcards));
 }
 
-export function show_flashcard_valid_answer(flashcard) {
+function show_flashcard_valid_answer(flashcard) {
   $(".card_view").append(
     "<p class='answer valid_answer'>" + flashcard.answer + "</p>"
   );
 }
 
-export function update_step_view(index, result) {
+function update_step_view(index, result) {
   $("#step" + index).removeClass("success fail");
   if (result) $("#step" + index).addClass("success");
   else $("#step" + index).addClass("fail");
@@ -137,7 +134,7 @@ function get_list_form_answer(answers_id) {
   return answers;
 }
 
-export function get_result(flashcard, answer) {
+function get_result(flashcard, answer) {
   if (
     flashcard.type == "string" ||
     flashcard.type == "word" ||
@@ -149,7 +146,7 @@ export function get_result(flashcard, answer) {
     return is_array_contain_same_values(flashcard.answer.split(", "), answer);
 }
 
-export function get_training_cookie() {
+function get_training_cookie() {
   let cookie = new Cookie();
   let tmp;
 

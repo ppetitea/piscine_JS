@@ -55,5 +55,3 @@ class Cookie {
         this.updateCookie(name, "", -1);
     }
 }
-
-export default Cookie

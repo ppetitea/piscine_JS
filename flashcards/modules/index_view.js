@@ -1,6 +1,5 @@
-import { get_categories_stats } from "./flashcards.mjs";
 
-export function update_view(current_selection) {
+function update_view(current_selection) {
   console.log(current_selection);
   empty_main_card_content_view();
   if (current_selection.view == "menu") show_menu_view();
@@ -11,7 +10,7 @@ export function update_view(current_selection) {
   else if (current_selection.view == "card_infos") show_card_infos_view();
 }
 
-export function empty_main_card_content_view() {
+function empty_main_card_content_view() {
   $(".tool_card")
     .children()
     .css("display", "none");
@@ -25,7 +24,7 @@ export function empty_main_card_content_view() {
     .removeClass("create_card create_category update_category update_card");
 }
 
-export function show_menu_view() {
+function show_menu_view() {
   let stats = get_categories_stats();
   $(".menu").css("display", "grid");
   $(".menu")
@@ -48,7 +47,7 @@ export function show_menu_view() {
   update_simple_cards_view(get_categories_view());
 }
 
-export function show_category_form_view() {
+function show_category_form_view() {
   $(".category_form").css("display", "grid");
   $(".controls")
     .children(".check_button")
@@ -58,7 +57,7 @@ export function show_category_form_view() {
     .css("display", "flex");
 }
 
-export function show_category_infos_view(category) {
+function show_category_infos_view(category) {
   let stats = get_categories_stats();
 
   $(".category_infos").css("display", "grid");
@@ -107,7 +106,7 @@ export function show_category_infos_view(category) {
   update_simple_cards_view(get_flashcards_view(category));
 }
 
-export function show_card_form_view() {
+function show_card_form_view() {
   $(".card_form").css("display", "grid");
   $(".controls")
     .children(".check_button")
@@ -119,7 +118,7 @@ export function show_card_form_view() {
   $(".string").addClass("option_checked");
 }
 
-export function show_card_infos_view() {
+function show_card_infos_view() {
   $(".card_infos").css("display", "grid");
   $(".controls")
     .children(".check_button")
@@ -129,7 +128,7 @@ export function show_card_infos_view() {
     .css("display", "flex");
 }
 
-export function update_simple_cards_view(view) {
+function update_simple_cards_view(view) {
   $(".card").remove();
   if (view === false) return false;
   for (const card_view of view) {
@@ -159,7 +158,7 @@ export function update_simple_cards_view(view) {
   return true;
 }
 
-export function get_categories_view() {
+function get_categories_view() {
   let card_all = {
     class: ["category"],
     content: [
@@ -198,7 +197,7 @@ export function get_categories_view() {
   return view;
 }
 
-export function get_flashcards_view(category) {
+function get_flashcards_view(category) {
   let card_add = {
     class: ["show_card_form"],
     content: [

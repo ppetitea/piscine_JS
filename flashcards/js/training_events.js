@@ -1,13 +1,3 @@
-import {
-  get_training_cookie,
-  initialize_view,
-  show_flashcard_form_view,
-  get_form_answer_result,
-  update_flashcard_remaining_days,
-  show_flashcard_valid_answer,
-  update_step_view
-} from "./../modules/training_view.mjs";
-
 let training = get_training_cookie();
 
 initialize_view(training.current_id);

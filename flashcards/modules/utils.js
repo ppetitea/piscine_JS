@@ -5,7 +5,7 @@
  * @param {Array} src - the 2 dimensional array to copy
  * @callback {Array} - new 2d array with differents references in memory
  */
-export function deep_copy_2d(src)
+function deep_copy_2d(src)
 {
     let ret = new Array();
 
@@ -23,7 +23,7 @@ export function deep_copy_2d(src)
  * @param {number} max - the maximum limit
  * @callback {number} - the result of number in loop overflow
  */
-export function limit(number, min, max)
+function limit(number, min, max)
 {
     if (number >= max)
         return min + number % (max - min);
@@ -32,7 +32,7 @@ export function limit(number, min, max)
     return number;
 }
 
-export function is_array_contain_same_values(array1, array2)
+function is_array_contain_same_values(array1, array2)
 {
     if (array1.length != array2.length)
         return false;

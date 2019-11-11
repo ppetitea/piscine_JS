@@ -1,12 +1,8 @@
 
 let current_selection = {'view': 'menu', 'category': {'id': 0, 'name': 'all'}, 'card_id': 0}
 
-import {update_view, get_categories_view, get_flashcards_view, empty_main_card_content_view, show_menu_view, show_category_form_view, show_category_infos_view, show_card_form_view, show_card_infos_view} from '../modules/index_view.mjs'
-import {update_category, update_flashcard, save_category, save_flashcard, delete_flashcard, delete_category, save_training_cards, get_categories_stats} from '../modules/flashcards.mjs'
-
 update_view(current_selection);
 
-// ************ EVENTS ************ //
 let is_theme_dark = true;
 $('.theme').on('click', function(){
     is_theme_dark = !is_theme_dark;
