@@ -1,0 +1,38 @@
+:root {
+    --background-color: #121212;
+    --card-color: rgb(34,34,34);
+    --step-color: #BB86FC;
+    --form-color: rgb(3,218,197);
+    --font-color: #BB86FC;
+    --font-color-focus: #BB86FC;
+    --placeholder-color: rgb(3,218,197);
+}
+[data-theme="light"] {
+    --background-color: #085a9d;
+    --card-color: #0b78d1;
+    --step-color: #79bff8;
+    --form-color: #074b83;
+    --font-color: #d2eafd;
+    --font-color-focus: white;
+    --placeholder-color: #79bff8;
+}
+body {
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+.center {
+    position: absolute;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: auto; 
+    margin-bottom: auto; 
+    left: 0; 
+    right: 0; 
+    top: 0;
+    bottom: 0;
+}
+.grid {
+    width: 90vmin;
+    height: 90vmin;
+    /* background-color: var(--card-color); */
+}
