@@ -1,4 +1,3 @@
-
 let canvas = document.getElementById("grid");
 
 fix_dpi(canvas);
@@ -13,8 +12,8 @@ function    initialize_grid(canvas, size)
             'height': canvas.getAttribute('height') - vmin(12),
             'normalize': (canvas.getAttribute('width') - vmin(12)) / size};
 }
-
-let grid = initialize_grid(canvas, 10);
+let size = 20;
+let grid = initialize_grid(canvas, size);
 
 drawCoordinateSystem(grid);
 
@@ -24,10 +23,12 @@ function drawCoordinateSystem(grid){
     let h = grid.height;
     let n = grid.normalize;
 
+    grid.ctx.beginPath();
     grid.ctx.fillStyle = "whitesmoke";
-    grid.ctx.font = "3vmin Arial";
+    grid.ctx.font = 40/size + "vmin Arial";
     grid.ctx.textAlign = "center";
     grid.ctx.strokeStyle = "lightgray";
+    grid.ctx.lineWidth = 1;
     
     for (let y = 0; n * y <= h; y++) {
         grid.ctx.fillText(grid.start + y, vmin(2), shift + n * y + vmin(1));
@@ -42,6 +43,7 @@ function drawCoordinateSystem(grid){
     grid.ctx.closePath();
     grid.ctx.stroke();
 }
+
 
 
 function vh(v) {
