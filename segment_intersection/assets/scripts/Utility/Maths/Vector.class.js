@@ -7,10 +7,10 @@ export class Vector {
         this.z = 1;
     }
     magnitude(){
-        return sqrt(pow(this.x, 2) + pow(this.y, 2));
+        return Math.sqrt(this.x * this.x + this.y * this.y);
     }
     normalize(){
-        let magnitude = this.magnitude;
+        let magnitude = this.magnitude();
         let x = this.x / magnitude;
         let y = this.y / magnitude;
         return new Vector(x, y);

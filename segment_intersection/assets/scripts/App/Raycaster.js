@@ -2,10 +2,9 @@ import { Vector } from "../Utility/Maths/Vector.class.js";
 import { Ray } from "../Components/Ray.class.js";
 import { Matrix } from "../Utility/Maths/Matrix.class.js";
 
-export function    raycaster(map, player, walls)
+export function    raycaster(map, player, sectors)
 {
     let matrix = new Matrix();
-    let hits = [];
     let hit;
     let ray;
     let dirShift = matrix.rotation(player.fov / player.rays);
@@ -13,38 +12,28 @@ export function    raycaster(map, player, walls)
     let tmpDest;
 
     for (let i = 0; i < player.rays; i++){
-        hits = [];
-        for (const wall of walls)
-        {
-            ray = new Ray(player.pos, dir);
-            hits.push(ray.cast(wall));
-        }
+        ray = new Ray(player.pos, dir);
         tmpDest = matrix.transformVertex(matrix.scale(10), dir).add(player.pos);
-        if (hit = getHitPosition(player.pos, hits))
-            ray.show(map, hit, 'blue');
+        if (hit = getHitPosition(ray, sectors, player.sector))
+            ray.show(map, hit.pos, 'rgba(255, 0, 255, 0.5)');
         else
-            ray.show(map, tmpDest, 'yellow');
+            ray.show(map, tmpDest, 'rgba(255, 255, 255, 0.2)');
         dir = matrix.transformVertex(dirShift, dir);
     }
 }
-
-function getHitPosition(origin, hits){
-    let ret = null;
-    let lastDist = null;
-    for (const hit of hits)
-    {
-        if (hit)
-        {   
-            let newDist = getDist(origin, hit);
-            if (lastDist == null || newDist < lastDist){
-                ret = hit;
-                lastDist = newDist;
+export function    getHitPosition(ray, sectors, currentSector, lastSector){
+    let hit = null;
+    for (const segment of sectors[currentSector]){
+        if (lastSector == undefined || segment.nextSector != lastSector){
+            hit = {'pos':ray.cast(segment)};
+            if (hit.pos != null){
+                if (segment.type == 'portal'){
+                    return getHitPosition(ray, sectors, segment.nextSector, currentSector);
+                }
+                hit.segment = segment;
+                return hit;
             }
         }
     }
-    return ret;
-}
-
-function getDist(origin, dest){
-    return (dest.x - origin.x) * (dest.x - origin.x) + (dest.y - origin.y) * (dest.y - origin.y);
+    return null;
 }

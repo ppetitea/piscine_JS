@@ -1,3 +1,4 @@
+import { Draw } from "./draw.class.js";
 
 let triangle = [{'x':5, 'y':2}, {'x':2, 'y':7}, {'x':8, 'y':7}];
 let rectangle = [{'x':1, 'y':1}, {'x':8, 'y':2}, {'x':8, 'y':7}, {'x':1, 'y':9}]
@@ -22,6 +23,16 @@ function drawShape(grid, points, color)
     grid.ctx.closePath();
 }
 
+export function    drawRect(map, size, position, color){
+    let draw = new Draw(map);
+    const pos = draw.transformCoor(position.x, position.y);
+    map.ctx.beginPath();
+    // map.ctx.lineWidth = size;
+    map.ctx.strokeStyle = color;
+    map.ctx.rect(pos.x, pos.y, size, size);
+    map.ctx.stroke();
+    map.ctx.beginPath();
+}
 // let wall = {'a':{'x':0, 'y': 0}, 'b':{'x':8, 'y': 2}};
 // let wall_view = wall_to_vertex_list(wall);
 // drawShape(grid, wall_view, 'red');

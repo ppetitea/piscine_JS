@@ -40,7 +40,7 @@ export class Ray{
         const pos = draw.transformCoor(this.pos.x, this.pos.y);
         dest = draw.transformCoor(dest.x, dest.y);
         map.ctx.beginPath();
-        map.ctx.lineWidth = 3;
+        map.ctx.lineWidth = 2;
         map.ctx.strokeStyle = color;
         map.ctx.moveTo(pos.x, pos.y);
         map.ctx.lineTo(dest.x,dest.y);
