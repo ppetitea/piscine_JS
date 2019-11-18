@@ -5,6 +5,7 @@ Personnal projects list to learn Javascript.
 [x] tic-tac-toe.<br>
 [x] sudoku generator.<br>
 [x] flashcards.<br>
+[x] raycaster.<br>
 [ ] project roadmap.<br>
 [ ] clock.<br>
 [ ] todolist.<br>
