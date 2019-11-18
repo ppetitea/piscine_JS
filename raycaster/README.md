@@ -17,4 +17,4 @@ Learnings :
 - css design
 
 ![Raycaster](assets/resources/raycaster.gif)
-<img src="./assets/resources/raycaster.png" width="800">
+<img src="./assets/resources/raycaster.PNG" width="800">
