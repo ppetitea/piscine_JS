@@ -35,6 +35,28 @@ export class Ray{
         }
     }
 
+    intersectLine(segment){
+        const x1 = segment.a.x;
+        const y1 = segment.a.y;
+        const x2 = segment.b.x;
+        const y2 = segment.b.y;
+
+        const x3 = this.pos.x;
+        const y3 = this.pos.y;
+        const x4 = this.pos.x + this.dir.x;
+        const y4 = this.pos.y + this.dir.y;
+
+        const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        if (den == 0) {
+            return null;
+        }        
+
+        const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den;
+        const ptX = x1 + t * (x2 - x1);
+        const ptY = y1 + t * (y2 - y1);
+        return new Vector(ptX, ptY);
+    }
+
     show(map, dest, color){
         const draw = new Draw(map);
         const pos = draw.transformCoor(this.pos.x, this.pos.y);

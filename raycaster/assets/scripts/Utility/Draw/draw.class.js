@@ -9,7 +9,7 @@ export class Draw{
     let n = this.map.normalize;
     return new Vertex(shift + n * x, shift + n * y); 
     }
-    reset_canvas(context)
+    reset_canvas(context, canvas)
     {
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
