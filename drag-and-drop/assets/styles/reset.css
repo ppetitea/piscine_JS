@@ -1,0 +1,22 @@
+body {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    list-style-type: none;
+}
+li {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}

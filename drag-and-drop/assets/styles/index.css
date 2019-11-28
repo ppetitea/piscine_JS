@@ -1,0 +1,78 @@
+:root {
+    --background-color: #121212;
+    --card-color: rgb(34,34,34);
+    --step-color: #BB86FC;
+    --form-color: rgb(3,218,197);
+    --font-color: #BB86FC;
+    --font-color-focus: #BB86FC;
+    --placeholder-color: rgb(3,218,197);
+}
+[data-theme="light"] {
+    --background-color: white;
+    --card-color: #0b78d1;
+    --step-color: #79bff8;
+    --form-color: #074b83;
+    --font-color: #d2eafd;
+    --font-color-focus: white;
+    --placeholder-color: #79bff8;
+}
+
+body {
+    background-color: rgb(210,144,52);
+    /* color: var(--font-color); */
+}
+#view {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.card {
+    padding: 1vmin 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 31vmin;
+    height: 44vmin;
+    border-radius: 3px;
+    background-color: rgb(235,236,240);
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(9,30,66,.25),0 0 0 1px rgba(9,30,66,.08);
+    font-family: 'Lora', serif;
+}
+[draggable=true] {
+    /* pointer-events: none; */
+    background-color: khaki;
+}
+.hide {
+    cursor: pointer;
+    /* display: none; */
+}
+.card-substitute {
+    background-color: rgba(0,0,0,.24);
+}
+.card-elevate {
+    cursor: grabbing;
+    box-shadow: 0 12px 24px -6px rgba(9,30,66,.25),0 0 0 1px rgba(9,30,66,.08);
+    transform: rotate(4deg)
+}
+.card h4 {
+    width: 27vmin;
+    margin: 0 1vmin;
+    padding: 1vmin;
+    background-color: rgb(249,249,251);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 1px 1px rgba(9,30,66,.25),0 0 0 1px rgba(9,30,66,.08);
+
+}
+.card-items > {
+    margin: auto;
+    width: 29vmin;
+    text-align: center;
+}
+
+.title-substitute {
+    background-color: rgba(0,0,0,.24);
+    height: 3vmin;
+    width: 29vmin;
+    margin: 0 1vmin;
+}

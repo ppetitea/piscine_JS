@@ -29,31 +29,20 @@ export class Todo {
     }
   }
 
-  view(){
+  view(index, deep){
     let todoView = document.createElement('li');
     todoView.textContent = this.action;
-    todoView.className = 'todo';
+    todoView.classList.add('todo', `deep${index}`);
     todoView.id = this.id;
     let todoItems = document.createElement('ul');
     todoItems.className = 'items';
-    if (deep > 0){
+    if (index < deep){
       for (let item of this.items){
-        todoItems.insertAdjacentElement('beforeend', item.view());
-        this.viewList(item, deep - 1);
+        todoItems.insertAdjacentElement('beforeend', item.view(index + 1, deep));
       }
     }
     todoView.insertAdjacentElement('beforeend', todoItems);
     return (todoView);
   }
 
-  viewList(deep){
-    let view = this.view();
-    if (deep > 0){
-      for (let item of this.items){
-        view.items.insertAdjacentElement('beforeend', item.view());
-        this.viewList(item, deep - 1);
-      }
-    }
-  }
-  return 
 }

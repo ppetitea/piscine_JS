@@ -1,0 +1,7 @@
+deep0: valeur = creer
+    deep1: projet = coder une app 'flashcard'
+        deep2: step = construire les fichiers/dossiers sur vscode
+        deep2: step = coder la home view html/css/js
+        deep2: step = coder la categorie view html/css/js
+        deep2: step = coder la training view html/css/js
+        
